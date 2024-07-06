@@ -1,13 +1,14 @@
-package com.tln.todoapptemplate;
+package com.tln.todoapptemplate.pages;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.$$;
 
-// page_url = https://www.jetbrains.com/
 public class MainPage {
 
     public SelenideElement inputField = $("[data-testid='text-input']");
-    public SelenideElement itemLabel = $("[data-testid='todo-item-label']");
+    public ElementsCollection itemButton = $$("[data-testid='todo-item-button']");
+    public ElementsCollection itemLabel = $$("[data-testid='todo-item-label']");
 }
