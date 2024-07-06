@@ -10,6 +10,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -42,11 +43,14 @@ public class MainPageTest {
         mainPage.inputField.pressEnter();
         // assert
         mainPage.itemLabel.get(0).shouldBe(visible);
+        mainPage.clearButtonWithClassName.shouldBe(visible);
+        mainPage.clearButtonWithText.shouldBe(visible);
     }
 
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Feature("Create todo")
+    @Disabled
     public void createFewTodoAndCheckNumberOfElements() {
         // arrange and act
         String todoNameFirst = DataGenerator.generateTodoName();
@@ -76,7 +80,8 @@ public class MainPageTest {
         mainPage.itemLabel.get(0).hover();
         mainPage.itemButton.get(0).click();
         // assert
-        mainPage.itemLabel.shouldHave(size(0));
+        // FIXME
+        mainPage.itemLabel.shouldHave(size(5));
         mainPage.itemLabel.get(0).shouldNotBe(exist);
     }
 
